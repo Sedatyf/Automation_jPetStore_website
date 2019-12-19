@@ -44,7 +44,7 @@ public class TestTableaux {
 		assertEquals("Product ID", driver.findElement(By.xpath("//tr[1]/th[2]")).getText());
 
 		//driver.findElement(By.xpath("//table/tbody/tr[3]/td[2]//a")).click();
-		int line = page_search.getLineTable(driver, research_value);
+		int line = page_search.getLineTable(research_value);
 		PageProduct page_product = page_search.clickLink(driver, line);
 		assertEquals(research_value, driver.findElement(By.xpath("//h2")).getText());
 	}

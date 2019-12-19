@@ -12,9 +12,9 @@ public class PageSearch extends PageMenu {
 	@FindBy(xpath = "//table")
 	WebElement table_search;
 
-	public int getLineTable(WebDriver driver, String value) {
+	public int getLineTable(String value) {
 		int currentLine = 1;
-		List<WebElement> lines = driver.findElements(By.xpath("//table/tbody/tr"));
+		List<WebElement> lines = table_search.findElements(By.xpath("tbody/tr"));
 		for (WebElement line : lines) {
 			System.out.println(currentLine);
 			List<WebElement> cells = line.findElements(By.xpath("td"));
@@ -28,13 +28,13 @@ public class PageSearch extends PageMenu {
 		return -1;
 	}
 
-	public WebElement getCell(WebDriver driver, int line, int col) {
-		WebElement element = driver.findElement(By.xpath("//table/tbody/tr[" + line + "]/td[" + col + "]//a"));
+	public WebElement getCell(int line, int col) {
+		WebElement element = table_search.findElement(By.xpath("tbody/tr[" + line + "]/td[" + col + "]//a"));
 		return element;
 	}
 
 	public PageProduct clickLink(WebDriver driver, int line) {
-		WebElement link = getCell(driver, line, 2);
+		WebElement link = getCell(line, 2);
 		link.click();
 		return PageFactory.initElements(driver, PageProduct.class);
 	}
