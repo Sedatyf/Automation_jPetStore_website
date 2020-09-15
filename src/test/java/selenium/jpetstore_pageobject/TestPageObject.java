@@ -31,7 +31,7 @@ public class TestPageObject {
 
 	@Test
 	public void testPage() {
-		driver.get("http://localhost:8090/jpetstore/actions/Catalog.action");
+		driver.get("http://localhost:8100/jpetstore/actions/Catalog.action");
 
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		page_login.clickSignIn(driver);
@@ -60,11 +60,6 @@ public class TestPageObject {
 		assertEquals("japanese", page_account.language_selected_value);
 		assertEquals("CATS", page_account.fav_category_selected_value);
 
-		assertTrue(page_account.mybanner_check.isEnabled());
-		assertTrue(page_account.mylist_check.isEnabled());
-
-		page_account.mylist_check.click();
-		assertTrue(page_account.mylist_check.isSelected() == false);
 	}
 
 }

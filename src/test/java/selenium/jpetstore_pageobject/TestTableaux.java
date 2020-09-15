@@ -30,7 +30,7 @@ public class TestTableaux {
 
 	@Test
 	public void test() {
-		driver.get("http://localhost:8090/jpetstore/actions/Catalog.action");
+		driver.get("http://localhost:8100/jpetstore/actions/Catalog.action");
 
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		page_login.clickSignIn(driver);

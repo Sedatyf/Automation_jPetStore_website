@@ -19,10 +19,10 @@ public abstract class PageMenu {
 	@FindBy(xpath = "//img[contains(@src, 'fish.gif')]")
 	WebElement btn_fish;
 	
-	@FindBy(name="keywords")
+	@FindBy(name="keyword")
 	static WebElement input_search;
 	
-	@FindBy(id="searchProducts")
+	@FindBy(name="searchProducts")
 	static WebElement btn_search;
 
 	@FindBy(linkText = "My Account")
