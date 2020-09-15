@@ -24,21 +24,21 @@ public class TestPageObject {
 	// JDD
 	String username = "j2ee";
 	String password = "j2ee";
-	String category_fish = "fish";
+	String category_fish = "FISH";
 	String id_produit_tiger_shark = "FI-SW-02";
-	String language_pref = "Japanese";
-	String fav_category = "REPTILES";
+	String language_pref = "japanese";
+	String fav_category = "CATS";
 
 	@Test
 	public void testPage() {
-		driver.get("https://jpetstore.cfapps.io/catalog");
+		driver.get("http://localhost:8090/jpetstore/actions/Catalog.action");
 
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		page_login.clickSignIn(driver);
 		assertEquals("Please enter your username and password.", page_login.login_message.getText());
 
 		PageHome page_home = page_login.logIn(driver, username, password);
-		assertEquals("Welcome ABC !", page_home.message_welcome.getText());
+		assertEquals("Welcome ABC!", page_home.message_welcome.getText());
 
 		PageCategory page_category = page_home.clickCategory(driver, category_fish);
 		assertEquals("Fish", page_category.h2_fish.getText());
@@ -57,8 +57,8 @@ public class TestPageObject {
 		PageAccount page_account = PageMenu.clickMyAccount(driver);
 		page_account.setLanguage(language_pref);
 		page_account.setFavouriteCategory(fav_category);
-		assertEquals("Japanese", page_account.language_selected_value);
-		assertEquals("REPTILES", page_account.fav_category_selected_value);
+		assertEquals("japanese", page_account.language_selected_value);
+		assertEquals("CATS", page_account.fav_category_selected_value);
 
 		assertTrue(page_account.mybanner_check.isEnabled());
 		assertTrue(page_account.mylist_check.isEnabled());

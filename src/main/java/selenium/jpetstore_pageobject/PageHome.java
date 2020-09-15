@@ -8,12 +8,22 @@ import org.openqa.selenium.support.PageFactory;
 
 public class PageHome extends PageMenu {
 
+	private WebDriver driver;
+
+	public PageHome(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	
 	// Bouton et message de bienvenue situé sur la gauche
-	@FindBy(xpath = "//*[@id=\"WelcomeContent\"]/div")
+	@FindBy(xpath = "//*[@id=\"WelcomeContent\"]")
 	WebElement message_welcome;
+	
+	
 
 	public PageCategory clickCategory(WebDriver driver, String category) {
-		driver.findElement(By.xpath("//img[contains(@src, '" + category + "_icon.gif')]")).click();
-		return PageFactory.initElements(driver, PageCategory.class);
+		driver.findElement(By.xpath("//*[contains(@href, \""+category+"\")]")).click();
+		return new PageCategory(driver);
 	}
 }

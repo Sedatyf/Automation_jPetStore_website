@@ -30,14 +30,14 @@ public class TestTableaux {
 
 	@Test
 	public void test() {
-		driver.get("https://jpetstore.cfapps.io/catalog");
+		driver.get("http://localhost:8090/jpetstore/actions/Catalog.action");
 
 		PageLogin page_login = PageFactory.initElements(driver, PageLogin.class);
 		page_login.clickSignIn(driver);
 		assertEquals("Please enter your username and password.", page_login.login_message.getText());
 
 		PageHome page_home = page_login.logIn(driver, username, password);
-		assertEquals("Welcome ABC !", page_home.message_welcome.getText());
+		assertEquals("Welcome ABC!", page_home.message_welcome.getText());
 
 		TechnicalTools.fillInput(PageMenu.input_search, research);
 		PageSearch page_search = PageMenu.clickSearch(driver);

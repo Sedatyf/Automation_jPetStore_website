@@ -7,6 +7,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PageCategory extends PageMenu {
+	
+	private WebDriver driver;
+
+	public PageCategory(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
 
 	@FindBy(xpath = "//h2[.=\"Fish\"]")
 	WebElement h2_fish;
@@ -16,6 +23,6 @@ public class PageCategory extends PageMenu {
 
 	public PageProduct clickLinkProduct(WebDriver driver, String produit) {
 		driver.findElement(By.linkText(produit)).click();
-		return PageFactory.initElements(driver, PageProduct.class);
+		return new PageProduct(driver);
 	}
 }

@@ -27,6 +27,9 @@ public abstract class PageMenu {
 
 	@FindBy(linkText = "My Account")
 	static WebElement link_myaccount;
+	
+	@FindBy(xpath = "//a[.=\"Return to Main Menu\"]") 
+	WebElement link_returnToMainMenu;
 
 	public PageLogin clickSignIn(WebDriver driver) {
 		link_signin.click();

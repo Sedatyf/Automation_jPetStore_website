@@ -6,10 +6,10 @@ import org.openqa.selenium.support.ui.Select;
 
 public class PageAccount {
 
-	@FindBy(id = "languagePreference")
+	@FindBy(name = "account.languagePreference")
 	WebElement language_select;
 
-	@FindBy(id = "favouriteCategoryId")
+	@FindBy(name = "account.favouriteCategoryId")
 	WebElement fav_category_select;
 
 	@FindBy(id = "listOption1")

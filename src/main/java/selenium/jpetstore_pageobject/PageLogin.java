@@ -6,13 +6,21 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PageLogin extends PageMenu {
+	
+	private WebDriver driver;
+
+	public PageLogin(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+	
 	@FindBy(name = "username")
 	WebElement input_username;
 
 	@FindBy(name = "password")
 	WebElement input_password;
 
-	@FindBy(xpath = "//*[@id=\"login\"]")
+	@FindBy(name = "signon")
 	WebElement btn_login;
 
 	@FindBy(xpath = "//p[1]")
@@ -22,6 +30,6 @@ public class PageLogin extends PageMenu {
 		TechnicalTools.fillInput(input_username, username);
 		TechnicalTools.fillInput(input_password, password);
 		btn_login.click();
-		return PageFactory.initElements(driver, PageHome.class);
+		return new PageHome(driver);
 	}
 }
